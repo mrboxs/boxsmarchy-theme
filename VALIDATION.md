@@ -37,7 +37,8 @@ Mode antislop: DURING, dipilih pengguna untuk sesi ini.
 Kontrol bawaan Omarchy tidak ditulis ulang. Pengujian berfokus pada permukaan
 dan state yang diwarnai theme ini. Helix tidak terpasang, jadi config-nya
 diverifikasi melalui parse TOML, referensi palette, dan pemeriksaan mapping.
-VS Code diverifikasi melalui output extension lokal; GUI editornya tidak dibuka.
+VS Code diverifikasi melalui output extension lokal dan instance GUI QA terpisah,
+dengan TextMate serta semantic highlighting diuji secara terpisah.
 Boot unlock tidak dipasang ke initramfs; aset dan preview saja yang diuji.
 App GTK yang sudah terbuka bisa perlu dibuka ulang untuk membaca warna baru.
 
@@ -90,6 +91,36 @@ diminta eksplisit dengan dua referensi pengguna; R-25 memakai rasio terukur;
 R-35 memakai hasil render dan penerapan wallpaper; R-40 memakai dimensi
 ekspor tetap. Tidak ada kontrol, motion, geometry desktop, atau syntax yang
 diubah pada pembaruan ini. Konfigurasi boot/initramfs tetap tidak disentuh.
+
+## Pembaruan fokus dan bold token
+
+- PASS: fokus aktif list/tree VS Code memakai background `#e5e5e5`, teks `#09090b`, dan highlight pencarian `#09090b`.
+- PASS: rasio teks/highlight pada fokus berubah dari pasangan bermasalah 1.31:1 menjadi 15.79:1.
+- PASS: fokus + selection aktif, Quick Input, dan match autocomplete masing-masing 15.79:1.
+- PASS: match biru pada hover gelap tetap 6.40:1; teks selection tidak aktif tetap 12.10:1.
+- PASS: aturan bold ada pada TextMate dan semantic tokens VS Code, termasuk modifier `function.defaultLibrary`.
+- PASS: Helix memiliki modifier bold pada keyword/operator, fungsi, constructor, tipe, namespace, dan tag; variabel, nilai constant, angka, string, serta comment tidak diberi bold.
+- PASS: Neovim diuji melalui highlight API saat colorscheme dimuat, mencakup syntax klasik, Tree-sitter, dan LSP. Group struktural bold, sementara teks normal dan token nilai tetap regular.
+- PASS: font terminal yang tersedia mencakup `JetBrainsMonoNerdFont-Bold.ttf`, tanpa mengubah pengaturan font global.
+- PASS: instance VS Code QA memuat theme dari salinan source dengan user-data dan extensions directory sementara, terpisah dari konfigurasi pribadi pengguna.
+- PASS: mode TextMate diuji dengan semantic highlighting nonaktif; `export`, `interface`, `function`, `greet`, dan `Theme` memiliki computed font-weight setidaknya 600.
+- PASS: mode semantic diuji setelah provider TypeScript aktif, dikonfirmasi lewat warna semantic readonly pada `count`; token struktural tetap bold dan angka/string/comment tetap regular.
+- PASS: shortcut Explorer membuka list; baris fokus memiliki computed background `rgb(229, 229, 229)` dan foreground `rgb(9, 9, 11)`.
+- PASS: Command Palette dibuka dan dicari dengan `Preferences`; teks match di baris fokus berwarna `rgb(9, 9, 11)` pada background `rgb(229, 229, 229)`.
+- PASS: Escape menutup palette; instance QA ditutup setelah uji dan fokus kembali ke jendela T3 semula.
+- PASS: tampilan kode dan fokus diperiksa dari screenshot instance QA.
+
+Aturan ini mengikuti [TextMate/semantic token VS Code](https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide),
+[state list/tree VS Code](https://code.visualstudio.com/api/references/theme-color#lists-and-trees),
+[modifier Helix](https://docs.helix-editor.com/themes.html), dan
+[code style One Dark Neovim](https://github.com/navarasu/onedark.nvim#default-configuration).
+Helix tetap divalidasi melalui config karena binary-nya tidak terpasang.
+Palet ANSI terminal hanya membawa warna; bobot token di aplikasi CLI lain
+tetap mengikuti style yang diminta aplikasi tersebut.
+
+Delivery Gate pembaruan editor: PASS untuk kontras dan scope visual R-25,
+keyboard/fokus R-32, runtime/GUI R-35, serta alasan hierarki tipografi R-06/R-31.
+Tidak ada perubahan layout, kontrol, wallpaper, ataupun motion pada pembaruan ini.
 
 ## Delivery Gate
 

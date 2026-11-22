@@ -22,6 +22,9 @@ Catppuccin from Omarchy
 - Interactive border `#a1a1a1`: keeps controls distinguishable against graphite.
 - Selection: inverted monochrome rows make keyboard position clear without adding a brand hue.
 - Code selection `#212121`: preserves syntax and comment contrast while selecting text.
+- Editor list focus: use accent-white rows with dark labels and dark search matches so both focused and selected items remain readable.
+- Token weight: bold keywords/operators, functions, types, namespaces, and tag names to expose code structure; retain regular variables, strings, numeric values, and italic comments.
+- Token engines: supply matching weight rules for TextMate/semantic tokens, Neovim classic/Tree-sitter/LSP, and Helix scopes.
 - Syntax: One Dark's complete chromatic palette keeps code categories distinguishable.
 - Comments `#828997`: One Dark's secondary neutral replaces its darker comment gray for readability.
 - Logo: replace the Omarchy O with the original mrboxs cube, preserving all six MARCHY glyphs and using `#e5e5e5`.

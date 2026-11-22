@@ -48,7 +48,7 @@ omarchy theme install https://github.com/mrboxs/boxsmarchy-theme
 
 Perintah ini mengambil versi yang sudah dipush ke GitHub. Omarchy menyaring
 Lua dari theme yang di-clone, sehingga Neovim memakai Aether yang dihasilkan
-dari palet One Dark. Untuk engine dan mapping `onedark.nvim`, jalankan
+dari palet One Dark. Untuk engine, mapping, dan aturan bold `onedark.nvim`, jalankan
 `bash tools/install.sh` dari checkout yang sudah lu baca. Config VS Code,
 Helix, shell, wallpaper, dan palet terminal tetap didukung lewat instalasi URL.
 
@@ -110,6 +110,29 @@ Versi PNG 4K untuk dipakai di luar Omarchy ada di
 Comment memakai `#828997`, neutral sekunder One Dark yang lebih terbaca
 di panel gelap daripada comment gray aslinya. Warna syntax lainnya tetap
 memakai palet One Dark.
+
+## Fokus dan bobot token
+
+Fokus aktif VS Code memakai bidang `#e5e5e5` dengan teks dan highlight
+pencarian `#09090b`. Explorer dan Command Palette mengikuti perlakuan yang
+sama. Fokus saat panel tidak aktif tetap gelap dengan outline yang terbaca.
+
+Neovim, Helix, dan theme VS Code (termasuk VSCodium/Cursor) memakai hierarki
+bobot yang sama:
+
+- **Bold:** keyword/operator, fungsi/method/macro, tipe/class/interface,
+  constructor, namespace, dan nama tag HTML/JSX.
+- **Normal:** variabel/property/parameter, string, angka, nilai constant,
+  dan atribut tag. Comment tetap italic tanpa bold.
+
+VS Code menyertakan aturan TextMate dan semantic token. Neovim mengatur
+syntax klasik, Tree-sitter, dan LSP supaya bold tetap ada saat language
+server aktif. Palet warnanya tetap One Dark.
+
+Terminal menampilkan bold ketika aplikasi di dalamnya meminta style tersebut
+(ANSI SGR 1). Palet ANSI theme tidak bisa menentukan mana token keyword,
+fungsi, atau string pada semua aplikasi CLI; aturan bold berada di config
+editor/aplikasi yang mendukungnya. Theme tidak menebalkan seluruh font terminal.
 
 ## Edit dan rebuild
 
