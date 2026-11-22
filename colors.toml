@@ -1,0 +1,36 @@
+mode = "dark"
+
+accent = "#e5e5e5"
+selection = "#212121"
+selection_foreground = "#fafafa"
+muted = "#828997"
+
+background = "#09090b"
+dark_background = "#080808"
+darker_background = "#000000"
+lighter_background = "#171717"
+
+foreground = "#fafafa"
+dark_foreground = "#a1a1a1"
+light_foreground = "#b8b8b8"
+bright_foreground = "#ffffff"
+
+# One Dark chromatic palette; desktop surfaces stay monochrome.
+red = "#e06c75"
+yellow = "#e5c07b"
+orange = "#d19a66"
+green = "#98c379"
+cyan = "#56b6c2"
+blue = "#61afef"
+magenta = "#c678dd"
+brown = "#be5046"
+
+bright_red = "#e06c75"
+bright_yellow = "#e5c07b"
+bright_green = "#98c379"
+bright_cyan = "#56b6c2"
+bright_blue = "#61afef"
+bright_magenta = "#c678dd"
+
+hyprland_active_border = "#e5e5e5"
+hyprland_inactive_border = "#3a3a3a"
