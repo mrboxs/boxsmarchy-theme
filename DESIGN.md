@@ -8,7 +8,9 @@ The dark version of [mrboxs's website](https://mrboxs.isntboxs.workers.dev/)
 sets the desktop palette: near-black canvas, graphite surfaces, white type,
 quiet separators, and inverted black-on-white selections. The
 [mrboxs brandkit](https://github.com/mrboxs/mrboxs-brandkit) supplies the
-unchanged white cube symbol and outlined wordmark. Catppuccin from Omarchy
+unchanged cube geometry. The user-supplied Omarchy SVG supplies the six
+remaining glyphs for the custom wordmark, replacing only its O with that cube.
+Catppuccin from Omarchy
 4.5.0-3 is the starting theme.
 
 ## Decisions
@@ -22,8 +24,12 @@ unchanged white cube symbol and outlined wordmark. Catppuccin from Omarchy
 - Code selection `#212121`: preserves syntax and comment contrast while selecting text.
 - Syntax: One Dark's complete chromatic palette keeps code categories distinguishable.
 - Comments `#828997`: One Dark's secondary neutral replaces its darker comment gray for readability.
-- Wallpaper: the original cube is the single focal point, surrounded by generous negative space.
-- Typography: retain the user's terminal and shell fonts; the supplied wordmark stays outlined.
+- Logo: replace the Omarchy O with the original mrboxs cube, preserving all six MARCHY glyphs and using `#e5e5e5`.
+- Logo spacing: a 60-unit gap separates the 211.45-unit cube from M, exceeding the brandkit's quarter-width clear-space rule.
+- Wallpaper: the custom wordmark is centered at 1600 px wide on a 3840 × 2160 canvas, matching the supplied reference's composition.
+- Default assets: wallpaper, wallpaper preview, unlock logo, and unlock preview all render directly from `logo.svg`.
+- Alternate wallpaper: retain the original symbol-only canvas as the second background.
+- Typography: retain the user's terminal and shell fonts; the user-supplied wordmark stays outlined.
 - Spacing: retain Omarchy's font-scaled spacing so the theme fits existing displays and controls.
 - Motion: no wallpaper animation or extra compositor effects; retain the user's system transitions.
 

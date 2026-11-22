@@ -11,13 +11,14 @@ esac
 project_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 theme_dir="$HOME/.config/omarchy/themes/boxsmarchy"
 files=(
-  colors.toml icons.theme chromium.theme neovim.lua helix.toml vscode-theme.json
+  colors.toml icons.theme chromium.theme neovim.lua helix.toml vscode-theme.json logo.svg
   shell.controls.toml shell.menu.toml shell.launcher.toml shell.popups.toml
   shell.notifications.toml
   preview.png unlock.png preview-unlock.png
 )
+backgrounds=(00-boxsmarchy-dark.webp 01-mrboxs-dark.png)
 
-for file in "${files[@]}" backgrounds/01-mrboxs-dark.png; do
+for file in "${files[@]}" "${backgrounds[@]/#/backgrounds/}"; do
   test -f "$project_root/$file" || {
     printf 'Missing theme file: %s\n' "$file" >&2
     exit 1
@@ -30,7 +31,9 @@ mkdir -p -- "$staging_dir/backgrounds"
 for file in "${files[@]}"; do
   cp -- "$project_root/$file" "$staging_dir/$file"
 done
-cp -- "$project_root/backgrounds/01-mrboxs-dark.png" "$staging_dir/backgrounds/"
+for background in "${backgrounds[@]}"; do
+  cp -- "$project_root/backgrounds/$background" "$staging_dir/backgrounds/"
+done
 
 # A local copy keeps the author's Neovim config; repo installs filter Lua.
 if [[ -e $theme_dir || -L $theme_dir ]]; then

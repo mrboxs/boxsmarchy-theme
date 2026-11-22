@@ -19,7 +19,7 @@ Mode antislop: DURING, dipilih pengguna untuk sesi ini.
 - PASS: JSON extension VS Code lokal sama dengan `vscode-theme.json` repo setelah sinkronisasi selesai.
 - PASS: file theme lokal sama dengan source repo, termasuk warna dan mapping editor.
 - PASS: master SVG yang disertakan sama dengan file brandkit yang diunduh.
-- PASS: PNG wallpaper 3840 × 2160, preview 960 × 540, unlock 640 × 139 dengan alpha, preview unlock 1920 × 1080.
+- PASS: wallpaper default WEBP lossless 3840 × 2160, alternatif PNG 3840 × 2160, preview 960 × 540, unlock 800 × 173 dengan alpha, preview unlock 1920 × 1080.
 - PASS: wallpaper dan preview unlock dirender lalu diperiksa secara visual.
 - PASS: integrasi theme-set yang terpasang melaporkan 0 failed.
 
@@ -59,6 +59,38 @@ Perhitungan syntax mencakup teks netral, comment, merah, oranye, kuning,
 hijau, cyan, biru, dan ungu yang ditentukan theme. Rasio ini tidak menjadi
 klaim kepatuhan menyeluruh untuk semua aplikasi/plugin pengguna.
 
+## Pembaruan logo custom dan default aset
+
+Permintaan pengguna: ganti O pada SVG Omarchy dengan simbol mrboxs, gunakan
+warna theme, lalu pakai hasilnya untuk wallpaper dan aset unlock/preview default.
+
+- PASS: O asli dihapus; keenam path MARCHY memiliki atribut path yang sama persis dengan SVG referensi.
+- PASS: kelima path simbol mrboxs sama persis dengan master brandkit, hanya diberi transform translasi dan skala seragam.
+- PASS: `logo.svg` memuat 11 path, satu warna `#e5e5e5`, tanpa font hidup, raster, filter, script, atau referensi eksternal.
+- PASS: jarak simbol ke M adalah 60 unit, melebihi seperempat lebar simbol yang sekitar 211.45 unit.
+- PASS: wallpaper baru memakai canvas 3840 × 2160 dan artwork selebar 1600 px, mengikuti lebar referensi.
+- PASS: bounding box artwork baru `(1120, 907, 2720, 1253)` terpusat dalam toleransi 1 px.
+- PASS: background `#09090b` dan warna logo `#e5e5e5` cocok dengan palette; kontras logo/canvas 15.79:1.
+- PASS: PNG 4K dan WEBP lossless memiliki pixel RGB yang identik.
+- PASS: `preview.png` 960 × 540, `unlock.png` 800 × 173 dengan alpha 0 sampai 255, dan `preview-unlock.png` 1920 × 1080.
+- PASS: wallpaper, preview unlock, dan logo pada ukuran 960, 320, 184, serta 160 px dirender untuk inspeksi; rekomendasi minimum wordmark lengkap adalah lebar 184 px.
+- PASS: salinan SVG dan WEBP referensi identik dengan attachment yang diberikan pengguna.
+- PASS: installer menyertakan master logo dan kedua wallpaper; `00-boxsmarchy-dark.webp` adalah file pertama dalam urutan default.
+- PASS: wallpaper baru dipilih melalui `omarchy theme bg set`; symlink background aktif menunjuk ke file baru.
+- PASS: logo, preview, unlock, dan wallpaper di theme terpasang/current identik dengan source repo.
+- PASS: `bash -n`, `git diff --check`, shell ping, dan pemeriksaan error config Hyprland lulus.
+
+Audit SVG tidak menghasilkan FAIL. Peringatan sudut yang mendekati 150 derajat
+berasal dari geometri simbol asli dan sengaja dipertahankan. Audit juga
+mencatat viewBox pecahan, presisi transform, dan bentuk wordmark yang lebar;
+simbol terpisah untuk ukuran kecil tetap tersedia di `assets/brand/`.
+
+Delivery Gate pembaruan aset: PASS. Cakupan R-23/R-37 adalah modifikasi yang
+diminta eksplisit dengan dua referensi pengguna; R-25 memakai rasio terukur;
+R-35 memakai hasil render dan penerapan wallpaper; R-40 memakai dimensi
+ekspor tetap. Tidak ada kontrol, motion, geometry desktop, atau syntax yang
+diubah pada pembaruan ini. Konfigurasi boot/initramfs tetap tidak disentuh.
+
 ## Delivery Gate
 
 ### Hard Gate
@@ -67,7 +99,7 @@ klaim kepatuhan menyeluruh untuk semua aplikasi/plugin pengguna.
 - R-03 PASS, scope desktop: menu dan app grid muat pada 1366 × 768; tidak ada halaman web/mobile baru.
 - R-17 PASS: ukuran aset dan rasio kontras berasal dari pengukuran.
 - R-18 PASS: tidak ada testimonial atau avatar buatan.
-- R-23 PASS: logo berasal dari brandkit yang diberikan; wallpaper memakai geometri asli.
+- R-23 PASS: logo memakai SVG Omarchy dan brandkit yang diberikan pengguna, dengan penggantian O yang diminta eksplisit.
 - R-24 PASS: tidak ada item navigasi baru atau tautan UI baru.
 - R-25 PASS: pasangan teks utama, sekunder, syntax, dan selection yang ditentukan theme dihitung di atas.
 - R-26 PASS: menu, submenu, search, dan penutupan overlay bekerja saat diuji.
@@ -87,7 +119,7 @@ klaim kepatuhan menyeluruh untuk semua aplikasi/plugin pengguna.
 
 - R-01 PASS: UI monokrom diambil dari web; warna tambahan khusus syntax dan status semantik.
 - R-04 PASS: logo asli dan ikon Yaru dipakai sesuai fungsi identitas/file manager.
-- R-06 PASS: font pengguna dipertahankan; wordmark memakai outline resmi brandkit.
+- R-06 PASS: font pengguna dipertahankan; wordmark custom memakai outline Omarchy yang diberikan pengguna.
 - R-07 PASS: wallpaper tidak memakai grid atau pola dekoratif.
 - R-08 PASS: tidak menambah panah pada kontrol.
 - R-09 PASS: tidak menambah badge dekoratif.
@@ -102,7 +134,7 @@ klaim kepatuhan menyeluruh untuk semua aplikasi/plugin pengguna.
 
 - Dials PASS: ENERGY 1 / RHYTHM 2 / MOTION 1 dicatat di `DESIGN.md`.
 - Konsistensi PASS: kontras tenang, bidang netral, dan tanpa animasi tambahan cocok dengan dials.
-- Focal point PASS: simbol putih tunggal menjadi fokus wallpaper.
+- Focal point PASS: wordmark custom tunggal menjadi fokus wallpaper default; simbol tunggal tetap tersedia sebagai alternatif.
 - Whitespace PASS: ruang kosong menjaga logo terbaca dan tidak bersaing dengan jendela.
 - Accent PASS: putih menandai selection/fokus; hue hanya membawa makna syntax/status.
 - Motif PASS: kubus berlapis asli menjadi pengenal utama theme.

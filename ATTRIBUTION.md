@@ -10,6 +10,12 @@
   `01-logos/dark/mrboxs-symbol.svg`, `mrboxs-horizontal.svg`, and
   `mrboxs-symbol-small.svg`. The supplied files in `assets/brand/` are unchanged.
   `assets/icon.svg` is a copy of the full symbol. Logo ownership remains with mrboxs.
+- Omarchy wordmark and wallpaper references: `logo.svg` and `omarchy.webp`
+  supplied by the user. Unchanged reference copies are stored at
+  `sources/omarchy-logo-original.svg` and `sources/omarchy-reference.webp`.
+  The original O path is removed in the custom root `logo.svg`; its six
+  MARCHY paths and the five mrboxs symbol paths are retained unchanged.
+  Translation and uniform scaling position the symbol without distorting it.
 - Syntax palette: [Atom One Dark](https://github.com/atom/one-dark-syntax/blob/master/styles/colors.less).
   Standard hex values are red `#e06c75`, orange `#d19a66`, yellow `#e5c07b`,
   green `#98c379`, cyan `#56b6c2`, blue `#61afef`, purple `#c678dd`, and
@@ -20,5 +26,8 @@
   installed default Plymouth assets. The preview is rendered offline; no boot
   configuration or initramfs is changed.
 
-The wallpaper embeds the original symbol geometry on the website's dark canvas.
-No Catppuccin backgrounds or logo assets are redistributed.
+The new default wallpaper recreates the supplied 3840 × 2160 reference with
+the custom logo at the same centered 1600 px width. Its original blue on
+`#181824` becomes theme accent `#e5e5e5` on `#09090b`. The older symbol-only
+wallpaper remains an alternative. Both the new wallpaper and unlock exports
+are built from the custom master in `logo.svg`.

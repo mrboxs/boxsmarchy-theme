@@ -1,4 +1,4 @@
-<img src="assets/brand/mrboxs-horizontal.svg" width="277" height="60" alt="mrboxs">
+<img src="logo.svg" width="360" height="78" alt="Omarchy dengan simbol mrboxs menggantikan huruf O">
 
 # Boxsmarchy
 
@@ -7,9 +7,12 @@ Theme dark Omarchy dari Catppuccin, mengikuti desain
 panel graphite, teks putih, dan selection monokrom. Syntax dan palet ANSI
 memakai warna lengkap One Dark.
 
-![Wallpaper Boxsmarchy, simbol mrboxs putih di latar gelap](preview.png)
+![Wallpaper Boxsmarchy, logo custom Omarchy dan mrboxs di latar gelap](preview.png)
 
 Gambar di atas adalah preview wallpaper, bukan screenshot desktop.
+Logo custom mengganti huruf `O` pada wordmark Omarchy dengan simbol mrboxs.
+Huruf `MARCHY` dan geometri simbol asli dipertahankan, dengan warna aksen
+`#e5e5e5` di atas background `#09090b`.
 
 ## Instal di mesin sendiri
 
@@ -59,8 +62,10 @@ Helix, shell, wallpaper, dan palet terminal tetap didukung lewat instalasi URL.
 | VS Code, VSCodium, Cursor | Theme warna lokal Omarchy, semantic tokens dan TextMate One Dark |
 | Helix | Mapping syntax One Dark dan UI monokrom |
 | File manager | Ikon `Yaru-dark` |
-| Wallpaper | PNG 3840 × 2160, logo asli brandkit |
-| Unlock | Logo transparan dan preview; tersedia di Appearance > Unlock |
+| Logo | `logo.svg`, simbol mrboxs menggantikan O pada wordmark Omarchy |
+| Wallpaper default | WEBP lossless 3840 × 2160, logo custom di tengah |
+| Wallpaper alternatif | PNG 3840 × 2160 dengan simbol mrboxs saja |
+| Unlock | Logo custom transparan dan preview; tersedia di Appearance > Unlock |
 
 Neovim akan memasang `navarasu/onedark.nvim` lewat Lazy saat pertama dipakai.
 Butuh koneksi internet untuk pemasangan plugin pertama. Integrasi editor
@@ -69,6 +74,21 @@ mengikuti toggle theme-sync Omarchy yang sudah lu atur.
 Theme ini tidak mengganti font, keybinding, ukuran bar, opacity global, atau
 layout desktop. Logo unlock tersedia untuk dipilih, tidak langsung dipasang
 ke konfigurasi boot.
+
+Wallpaper default untuk pemasangan baru adalah `00-boxsmarchy-dark.webp`.
+Omarchy bisa mengingat wallpaper yang sebelumnya dipilih. Untuk memakai
+default baru pada instalasi yang sudah ada:
+
+```bash
+omarchy theme bg set ~/.local/state/omarchy/current/theme/backgrounds/00-boxsmarchy-dark.webp
+```
+
+`preview.png` mengikuti wallpaper baru, sedangkan `unlock.png` dan
+`preview-unlock.png` memakai master `logo.svg` yang sama. Logo lengkap
+disarankan dipakai mulai lebar 184 px; untuk ikon kecil tetap gunakan
+simbol dari `assets/brand/`.
+Versi PNG 4K untuk dipakai di luar Omarchy ada di
+[`assets/boxsmarchy-wallpaper.png`](assets/boxsmarchy-wallpaper.png).
 
 ## Palet
 
@@ -96,7 +116,9 @@ memakai palet One Dark.
 - Edit `colors.toml` untuk warna yang dipakai generator Omarchy.
 - Override `shell.*.toml` hanya mengubah bagian shell yang disebut di nama file.
 - Kalau warna syntax diganti, selaraskan `neovim.lua`, `helix.toml`, dan `vscode-theme.json`.
-- Source wallpaper ada di `sources/mrboxs-dark.svg`; master logo ada di `assets/brand/`.
+- Master logo custom ada di `logo.svg`; build wallpaper default dan unlock memakai file ini langsung.
+- Source wallpaper alternatif ada di `sources/mrboxs-dark.svg`; master mrboxs asli ada di `assets/brand/`.
+- Referensi Omarchy dari pengguna disimpan utuh di `sources/omarchy-logo-original.svg` dan `sources/omarchy-reference.webp`.
 
 ```bash
 bash tools/build-assets.sh
