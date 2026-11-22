@@ -63,6 +63,7 @@ Helix, shell, wallpaper, dan palet terminal tetap didukung lewat instalasi URL.
 | Helix | Mapping syntax One Dark dan UI monokrom |
 | File manager | Ikon `Yaru-dark` |
 | Logo | `logo.svg`, simbol mrboxs menggantikan O pada wordmark Omarchy |
+| Ikon / Fastfetch | `icon.svg` dan PNG 600 × 600, frame Omarchy dengan simbol mrboxs di tengah |
 | Wallpaper default | WEBP lossless 3840 × 2160, logo custom di tengah |
 | Wallpaper alternatif | PNG 3840 × 2160 dengan simbol mrboxs saja |
 | Unlock | Logo custom transparan dan preview; tersedia di Appearance > Unlock |
@@ -89,6 +90,42 @@ disarankan dipakai mulai lebar 184 px; untuk ikon kecil tetap gunakan
 simbol dari `assets/brand/`.
 Versi PNG 4K untuk dipakai di luar Omarchy ada di
 [`assets/boxsmarchy-wallpaper.png`](assets/boxsmarchy-wallpaper.png).
+
+## Logo Fastfetch
+
+Setelah memasang theme, pasang logo ke Fastfetch dengan:
+
+```bash
+python3 tools/install-fastfetch.py
+fastfetch
+```
+
+Script membaca config Fastfetch yang sedang digunakan, membuat backup di
+`~/.local/state/omarchy/theme-backups/fastfetch-*/`, lalu hanya mengganti blok
+`logo` pada `~/.config/fastfetch/config.jsonc` (atau lokasi `XDG_CONFIG_HOME`).
+Modul, command, dan opsi display yang ada tetap dipertahankan. JSONC dengan
+comment/trailing comma didukung; file hasil ditulis sebagai JSON yang dirapikan.
+Menjalankan script lagi dengan pengaturan logo yang sama tidak mengubah config.
+
+Profile `fastfetch-logo.json` menggunakan gambar `icon.png` melalui protokol
+Kitty, cocok untuk Ghostty yang dipakai di mesin ini. Lebar ditentukan sebagai
+54 kolom, sedangkan tinggi **tidak dipaksa**: Fastfetch menghitungnya dari rasio
+PNG persegi dan ukuran pixel sel terminal. Ini menggantikan logo teks lama
+yang bentuknya bergantung pada perbandingan lebar/tinggi karakter font.
+
+Path gambar menunjuk ke theme terpasang, bukan ke checkout repo atau theme
+sementara, jadi tetap tersedia saat berpindah theme. Pemasangan ulang theme
+memperbarui gambar yang sama tanpa mengganti modul Fastfetch.
+
+Kalau memakai Foot yang mendukung Sixel, jalankan:
+
+```bash
+fastfetch --logo-type sixel
+```
+
+Ikon lengkap direkomendasikan mulai 96 px; simbol mrboxs untuk ukuran kecil
+tetap tersedia di `assets/brand/`. Detail perilaku rasio dan protokol ada di
+[dokumentasi logo Fastfetch](https://github.com/fastfetch-cli/fastfetch/wiki/Logo-options).
 
 ## Palet
 
@@ -140,8 +177,11 @@ editor/aplikasi yang mendukungnya. Theme tidak menebalkan seluruh font terminal.
 - Override `shell.*.toml` hanya mengubah bagian shell yang disebut di nama file.
 - Kalau warna syntax diganti, selaraskan `neovim.lua`, `helix.toml`, dan `vscode-theme.json`.
 - Master logo custom ada di `logo.svg`; build wallpaper default dan unlock memakai file ini langsung.
+- Master ikon Fastfetch ada di `icon.svg`; build menghasilkan `icon.png` persegi 600 × 600.
+- Setelah edit ikon, pasang ulang theme untuk memperbarui gambar Fastfetch di path yang sama.
 - Source wallpaper alternatif ada di `sources/mrboxs-dark.svg`; master mrboxs asli ada di `assets/brand/`.
 - Referensi Omarchy dari pengguna disimpan utuh di `sources/omarchy-logo-original.svg` dan `sources/omarchy-reference.webp`.
+- Referensi ikon Omarchy disimpan utuh di `sources/omarchy-icon-original.png`.
 
 ```bash
 bash tools/build-assets.sh

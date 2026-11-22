@@ -12,6 +12,7 @@ project_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 theme_dir="$HOME/.config/omarchy/themes/boxsmarchy"
 files=(
   colors.toml icons.theme chromium.theme neovim.lua helix.toml vscode-theme.json logo.svg
+  icon.svg icon.png fastfetch-logo.json
   shell.controls.toml shell.menu.toml shell.launcher.toml shell.popups.toml
   shell.notifications.toml
   preview.png unlock.png preview-unlock.png

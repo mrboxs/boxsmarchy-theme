@@ -122,6 +122,37 @@ Delivery Gate pembaruan editor: PASS untuk kontras dan scope visual R-25,
 keyboard/fokus R-32, runtime/GUI R-35, serta alasan hierarki tipografi R-06/R-31.
 Tidak ada perubahan layout, kontrol, wallpaper, ataupun motion pada pembaruan ini.
 
+## Ikon berbingkai dan Fastfetch
+
+- PASS: referensi ikon 300 × 300 disalin utuh ke `sources/omarchy-icon-original.png`.
+- PASS: frame `icon.svg` pada ukuran 300 × 300 cocok pixel-for-pixel dengan geometri frame referensi di luar ruang tengah, setelah penggantian dua warna.
+- PASS: kelima path simbol mrboxs sama dengan master brandkit, diposisikan dengan translasi dan skala seragam.
+- PASS: simbol berada di tengah `(150, 150)`, tinggi 120 unit dengan jarak minimal 30 unit dari batas bukaan tengah.
+- PASS: warna sumber hanya accent `#e5e5e5` dan background `#09090b`; tidak ada font hidup, raster, filter, atau referensi eksternal pada SVG.
+- PASS: `icon.png` diekspor persegi 600 × 600 dan ikut dipasang ke direktori theme.
+- PASS: blok logo Fastfetch memakai protokol Kitty, `width = 54`, dan tidak menetapkan `height`.
+- PASS: config pengguna yang dibuat cocok dengan config sistem sebelumnya pada semua key selain `logo`, termasuk seluruh modul, command, dan display.
+- PASS: parser JSONC diuji dengan comment, trailing comma, URL yang mengandung `//`, serta command string berisi quote dan karakter mirip comment.
+- PASS: config sebelumnya dibackup sebelum perubahan; penerapan ulang yang sama tidak menulis ulang config.
+- PASS: Fastfetch diuji di Ghostty dengan font 8; frame gambar yang terukur adalah 272 × 272 px (rasio 1.0).
+- PASS: Fastfetch diuji di Ghostty dengan font 12; frame gambar yang terukur adalah 433 × 433 px (rasio 1.0).
+- PASS: pengukuran dilakukan dari komponen frame pada screenshot terminal, bukan dari perkiraan rasio kolom/baris.
+- PASS: kedua uji menghasilkan exit code 0 dan tidak memiliki error render logo pada stderr.
+- PASS: uji font 12 menjalankan deteksi TTY normal dengan `NO_COLOR` dari harness dihapus hanya untuk proses uji; config pengguna tidak dipaksa ke mode non-pipe.
+- PASS: seluruh jendela terminal QA ditutup setelah pengujian dan fokus dikembalikan ke jendela T3 semula.
+
+Fastfetch sebelumnya memakai file teks 54 kolom × 26 baris. Perbandingan
+fisiknya berubah menurut metrik sel font terminal; file PNG persegi dengan
+lebar saja menghindari pemaksaan tinggi tersebut. Detail opsi mengikuti
+[dokumentasi logo Fastfetch](https://github.com/fastfetch-cli/fastfetch/wiki/Logo-options).
+Profile default diuji dengan Ghostty/Kitty graphics; Sixel untuk Foot
+didokumentasikan sebagai opsi, bukan hasil uji tambahan.
+
+Delivery Gate pembaruan ikon/Fastfetch: PASS untuk aset yang diminta eksplisit
+(R-23/R-37), palet dan bentuk asli, render serta pengukuran nyata (R-35),
+dan dimensi gambar tetap (R-40). Tidak ada perubahan modul informasi,
+pengaturan font global, atau source Omarchy yang terpasang.
+
 ## Delivery Gate
 
 ### Hard Gate

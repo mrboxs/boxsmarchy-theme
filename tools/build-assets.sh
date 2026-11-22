@@ -11,6 +11,7 @@ staging_dir=$(mktemp -d)
 trap 'rm -rf -- "$staging_dir"' EXIT
 
 mkdir -p backgrounds
+rsvg-convert -w 600 -h 600 icon.svg -o icon.png
 rsvg-convert -w 1600 logo.svg -o "$staging_dir/wallpaper-logo.png"
 magick -size 3840x2160 'xc:#09090b' \
   "$staging_dir/wallpaper-logo.png" -gravity center -composite \

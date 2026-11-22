@@ -32,6 +32,9 @@ Catppuccin from Omarchy
 - Wallpaper: the custom wordmark is centered at 1600 px wide on a 3840 × 2160 canvas, matching the supplied reference's composition.
 - Default assets: wallpaper, wallpaper preview, unlock logo, and unlock preview all render directly from `logo.svg`.
 - Alternate wallpaper: retain the original symbol-only canvas as the second background.
+- Framed icon: reconstruct the supplied Omarchy icon on its 20-unit pixel grid, recolor to accent/background, and place the unmodified mrboxs symbol in its center.
+- Icon clear space: the centered cube is 120 units high inside the 180-unit opening, leaving at least 30 units around it without nonuniform scaling.
+- Fastfetch geometry: render the square PNG through Kitty with width only, letting terminal pixel metrics determine the height instead of relying on character-cell proportions.
 - Typography: retain the user's terminal and shell fonts; the user-supplied wordmark stays outlined.
 - Spacing: retain Omarchy's font-scaled spacing so the theme fits existing displays and controls.
 - Motion: no wallpaper animation or extra compositor effects; retain the user's system transitions.
