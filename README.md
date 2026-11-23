@@ -107,11 +107,17 @@ Modul, command, dan opsi display yang ada tetap dipertahankan. JSONC dengan
 comment/trailing comma didukung; file hasil ditulis sebagai JSON yang dirapikan.
 Menjalankan script lagi dengan pengaturan logo yang sama tidak mengubah config.
 
-Profile `fastfetch-logo.json` menggunakan gambar `icon.png` melalui protokol
-Kitty, cocok untuk Ghostty yang dipakai di mesin ini. Lebar ditentukan sebagai
-54 kolom, sedangkan tinggi **tidak dipaksa**: Fastfetch menghitungnya dari rasio
-PNG persegi dan ukuran pixel sel terminal. Ini menggantikan logo teks lama
-yang bentuknya bergantung pada perbandingan lebar/tinggi karakter font.
+Profile `fastfetch-logo.json` menggunakan gambar `fastfetch.png` melalui
+protokol Kitty, cocok untuk Ghostty yang dipakai di mesin ini. Tinggi 27 baris
+dikalibrasi pada font 8 agar gambar sejajar dengan tiga blok informasi Omarchy. Lebar
+**tidak ditetapkan**: Fastfetch menghitungnya dari rasio gambar dan ukuran
+pixel sel terminal, sehingga ikon tidak diregangkan.
+
+`icon.png` tetap persegi 600 × 600. Versi khusus Fastfetch berukuran 624 × 656,
+dengan frame persegi dan padding optik atas/bawah untuk menyelaraskan tepi
+gambar dengan garis kotak informasi. Kalau jumlah modul/baris informasi
+atau ukuran font diubah, sesuaikan `height`/padding; jangan memaksa `width`
+dan `height` sekaligus.
 
 Path gambar menunjuk ke theme terpasang, bukan ke checkout repo atau theme
 sementara, jadi tetap tersedia saat berpindah theme. Pemasangan ulang theme
@@ -178,6 +184,7 @@ editor/aplikasi yang mendukungnya. Theme tidak menebalkan seluruh font terminal.
 - Kalau warna syntax diganti, selaraskan `neovim.lua`, `helix.toml`, dan `vscode-theme.json`.
 - Master logo custom ada di `logo.svg`; build wallpaper default dan unlock memakai file ini langsung.
 - Master ikon Fastfetch ada di `icon.svg`; build menghasilkan `icon.png` persegi 600 × 600.
+- `fastfetch.png` menambahkan padding optik khusus penyejajaran; bentuk frame di dalamnya tetap persegi.
 - Setelah edit ikon, pasang ulang theme untuk memperbarui gambar Fastfetch di path yang sama.
 - Source wallpaper alternatif ada di `sources/mrboxs-dark.svg`; master mrboxs asli ada di `assets/brand/`.
 - Referensi Omarchy dari pengguna disimpan utuh di `sources/omarchy-logo-original.svg` dan `sources/omarchy-reference.webp`.

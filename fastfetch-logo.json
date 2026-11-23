@@ -1,7 +1,7 @@
 {
   "type": "kitty",
-  "source": "~/.config/omarchy/themes/boxsmarchy/icon.png",
-  "width": 54,
+  "source": "~/.config/omarchy/themes/boxsmarchy/fastfetch.png",
+  "height": 27,
   "padding": {
     "top": 2,
     "right": 6,

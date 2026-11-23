@@ -12,6 +12,11 @@ trap 'rm -rf -- "$staging_dir"' EXIT
 
 mkdir -p backgrounds
 rsvg-convert -w 600 -h 600 icon.svg -o icon.png
+rsvg-convert -w 624 -h 624 icon.svg -o "$staging_dir/fastfetch-icon.png"
+# Optical padding aligns the square with the information panel's box strokes.
+magick -size 624x656 'xc:#09090b' \
+  "$staging_dir/fastfetch-icon.png" -geometry +0+12 -composite \
+  -depth 8 fastfetch.png
 rsvg-convert -w 1600 logo.svg -o "$staging_dir/wallpaper-logo.png"
 magick -size 3840x2160 'xc:#09090b' \
   "$staging_dir/wallpaper-logo.png" -gravity center -composite \

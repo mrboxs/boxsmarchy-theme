@@ -122,7 +122,7 @@ Delivery Gate pembaruan editor: PASS untuk kontras dan scope visual R-25,
 keyboard/fokus R-32, runtime/GUI R-35, serta alasan hierarki tipografi R-06/R-31.
 Tidak ada perubahan layout, kontrol, wallpaper, ataupun motion pada pembaruan ini.
 
-## Ikon berbingkai dan Fastfetch
+## Uji awal ikon berbingkai dan Fastfetch
 
 - PASS: referensi ikon 300 × 300 disalin utuh ke `sources/omarchy-icon-original.png`.
 - PASS: frame `icon.svg` pada ukuran 300 × 300 cocok pixel-for-pixel dengan geometri frame referensi di luar ruang tengah, setelah penggantian dua warna.
@@ -130,7 +130,7 @@ Tidak ada perubahan layout, kontrol, wallpaper, ataupun motion pada pembaruan in
 - PASS: simbol berada di tengah `(150, 150)`, tinggi 120 unit dengan jarak minimal 30 unit dari batas bukaan tengah.
 - PASS: warna sumber hanya accent `#e5e5e5` dan background `#09090b`; tidak ada font hidup, raster, filter, atau referensi eksternal pada SVG.
 - PASS: `icon.png` diekspor persegi 600 × 600 dan ikut dipasang ke direktori theme.
-- PASS: blok logo Fastfetch memakai protokol Kitty, `width = 54`, dan tidak menetapkan `height`.
+- PASS (profile awal): blok logo Fastfetch memakai protokol Kitty, `width = 54`, dan tidak menetapkan `height`; profile penyejajaran terbaru dicatat di bawah.
 - PASS: config pengguna yang dibuat cocok dengan config sistem sebelumnya pada semua key selain `logo`, termasuk seluruh modul, command, dan display.
 - PASS: parser JSONC diuji dengan comment, trailing comma, URL yang mengandung `//`, serta command string berisi quote dan karakter mirip comment.
 - PASS: config sebelumnya dibackup sebelum perubahan; penerapan ulang yang sama tidak menulis ulang config.
@@ -152,6 +152,24 @@ Delivery Gate pembaruan ikon/Fastfetch: PASS untuk aset yang diminta eksplisit
 (R-23/R-37), palet dan bentuk asli, render serta pengukuran nyata (R-35),
 dan dimensi gambar tetap (R-40). Tidak ada perubahan modul informasi,
 pengaturan font global, atau source Omarchy yang terpasang.
+
+## Penyejajaran logo dan informasi Fastfetch
+
+- PASS: `icon.png` tetap 600 × 600; export presentasi terpisah `fastfetch.png` berukuran 624 × 656 dengan frame 624 × 624 pada posisi `(0, 12)`.
+- PASS: profile saat ini memakai `height = 27` tanpa `width`, sehingga backend menghitung lebar secara proporsional.
+- PASS: padding optik 12 px di atas dan 20 px di bawah tidak meregangkan geometri frame atau simbol.
+- PASS: pada Ghostty font 8 yang dipakai pengguna, frame terukur pada `(25, 45, 337, 358)`; batas vertikal blok informasi `(43, 357)`.
+- PASS: selisih bagian atas 2 px dan bagian bawah 1 px; frame tampak persegi dalam toleransi pembulatan render 1 px.
+- PASS: pengukuran memakai screenshot terminal nyata; tampilan hasil juga diperiksa secara visual.
+- PASS: Fastfetch menghasilkan exit code 0 tanpa error logo pada stderr; window QA ditutup setelah pemeriksaan.
+- PASS: modul, command, dan pengaturan display tetap sama; hanya konfigurasi logo yang diubah.
+- PASS: source profile, PNG yang terpasang, dan config Fastfetch pengguna sama; backup config sebelumnya dibuat sebelum perubahan.
+
+Penyejajaran dikalibrasi untuk layout tiga panel dan font 8 saat ini. Posisi
+garis karakter dapat berubah pada metrik/font atau jumlah baris modul lain;
+gunakan `height` dan padding untuk menyesuaikannya tanpa memaksa dua dimensi.
+Delivery Gate perubahan tata letak: PASS untuk cakupan ukuran font yang
+diminta, proporsi logo, dan verifikasi render nyata (R-35/R-40).
 
 ## Delivery Gate
 

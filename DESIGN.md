@@ -34,7 +34,8 @@ Catppuccin from Omarchy
 - Alternate wallpaper: retain the original symbol-only canvas as the second background.
 - Framed icon: reconstruct the supplied Omarchy icon on its 20-unit pixel grid, recolor to accent/background, and place the unmodified mrboxs symbol in its center.
 - Icon clear space: the centered cube is 120 units high inside the 180-unit opening, leaving at least 30 units around it without nonuniform scaling.
-- Fastfetch geometry: render the square PNG through Kitty with width only, letting terminal pixel metrics determine the height instead of relying on character-cell proportions.
+- Fastfetch geometry: render through Kitty with height only, letting terminal pixel metrics determine the width instead of stretching both dimensions.
+- Fastfetch alignment: a dedicated 624 × 656 export holds the unchanged square frame with 12 px above and 20 px below; its 27-row display height is calibrated to the default three-panel information block.
 - Typography: retain the user's terminal and shell fonts; the user-supplied wordmark stays outlined.
 - Spacing: retain Omarchy's font-scaled spacing so the theme fits existing displays and controls.
 - Motion: no wallpaper animation or extra compositor effects; retain the user's system transitions.
