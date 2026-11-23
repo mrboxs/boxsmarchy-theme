@@ -8,10 +8,10 @@ graphite panels, and white focus states frame a full One Dark syntax palette.
 
 ## Preview
 
-<img src="preview.png" width="1366" height="768" alt="Boxsmarchy desktop with the custom mrboxs Fastfetch logo, btop, and Ghostty terminals">
+<img src="preview.png" width="1366" height="768" alt="Boxsmarchy desktop with the custom mrboxs Fastfetch logo and Neovim showing One Dark syntax colors in Ghostty">
 
-The screenshot shows Ghostty, Fastfetch, and btop with JetBrainsMono Nerd Font
-at 8 pt.
+The screenshot shows Fastfetch and Neovim in Ghostty with JetBrainsMono Nerd
+Font, using 8 pt for Fastfetch and 10 pt for the editor.
 
 ## What's included
 
