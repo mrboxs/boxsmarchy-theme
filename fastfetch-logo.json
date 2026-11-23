@@ -1,0 +1,10 @@
+{
+  "type": "kitty",
+  "source": "~/.config/omarchy/themes/boxsmarchy/fastfetch.png",
+  "height": 27,
+  "padding": {
+    "top": 2,
+    "right": 6,
+    "left": 2
+  }
+}

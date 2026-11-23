@@ -1,13 +1,13 @@
-"keyword" = "purple"
-"keyword.control" = "purple"
-"keyword.operator" = "purple"
-"keyword.storage" = "purple"
-"function" = "blue"
-"function.builtin" = "cyan"
-"function.macro" = "purple"
-"constructor" = "yellow"
-"type" = "yellow"
-"type.builtin" = "yellow"
+"keyword" = { fg = "purple", modifiers = ["bold"] }
+"keyword.control" = { fg = "purple", modifiers = ["bold"] }
+"keyword.operator" = { fg = "purple", modifiers = ["bold"] }
+"keyword.storage" = { fg = "purple", modifiers = ["bold"] }
+"function" = { fg = "blue", modifiers = ["bold"] }
+"function.builtin" = { fg = "cyan", modifiers = ["bold"] }
+"function.macro" = { fg = "purple", modifiers = ["bold"] }
+"constructor" = { fg = "yellow", modifiers = ["bold"] }
+"type" = { fg = "yellow", modifiers = ["bold"] }
+"type.builtin" = { fg = "yellow", modifiers = ["bold"] }
 "type.enum.variant" = "orange"
 "constant" = "orange"
 "constant.builtin" = "orange"
@@ -25,9 +25,9 @@
 "label" = "red"
 "punctuation" = "syntax"
 "punctuation.special" = "cyan"
-"operator" = "purple"
-"tag" = "red"
-"namespace" = "yellow"
+"operator" = { fg = "purple", modifiers = ["bold"] }
+"tag" = { fg = "red", modifiers = ["bold"] }
+"namespace" = { fg = "yellow", modifiers = ["bold"] }
 "special" = "cyan"
 "attribute" = "orange"
 
