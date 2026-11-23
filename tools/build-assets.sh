@@ -10,7 +10,7 @@ command -v magick >/dev/null
 staging_dir=$(mktemp -d)
 trap 'rm -rf -- "$staging_dir"' EXIT
 
-mkdir -p backgrounds
+mkdir -p backgrounds assets/themes
 rsvg-convert -w 600 -h 600 icon.svg -o icon.png
 rsvg-convert -w 624 -h 624 icon.svg -o "$staging_dir/fastfetch-icon.png"
 # Optical padding aligns the square with the information panel's box strokes.
@@ -23,7 +23,7 @@ magick -size 3840x2160 'xc:#09090b' \
   -depth 8 assets/boxsmarchy-wallpaper.png
 magick assets/boxsmarchy-wallpaper.png \
   -define webp:lossless=true backgrounds/00-boxsmarchy-dark.webp
-magick backgrounds/00-boxsmarchy-dark.webp -resize 960x540 preview.png
+magick preview.png -strip -resize '1200>' -quality 80 assets/themes/boxsmarchy.webp
 rsvg-convert sources/mrboxs-dark.svg -o backgrounds/01-mrboxs-dark.png
 rsvg-convert -w 800 logo.svg -o unlock.png
 
